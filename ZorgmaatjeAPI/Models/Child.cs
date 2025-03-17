@@ -8,7 +8,7 @@ public class Child
 {
     [Required]
     [StringLength(450)]
-    public string UserId { get; set; }
+    public string UserId { get; set; } // Refered to as ChildId
 
     [Required]
     [StringLength(100)]

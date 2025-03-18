@@ -1,17 +1,13 @@
-﻿namespace _2dRooms.Services
+﻿namespace _2dRooms.Services;
+
+public class ConnectionStringService
 {
-    public class ConnectionStringService
+    private readonly string _connectionString;
+
+    public ConnectionStringService(IConfiguration configuration)
     {
-        private readonly string _connectionString;
-
-        public ConnectionStringService(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
-        public string GetConnectionString()
-        {
-            return _connectionString;
-        }
+        _connectionString = configuration.GetValue<string>("SqlConnectionString") ?? throw new ArgumentNullException("Missing connection string");
     }
+
+    public string GetConnectionString() => _connectionString;
 }

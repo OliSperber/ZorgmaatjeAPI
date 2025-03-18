@@ -17,15 +17,18 @@ builder.Services.AddSwaggerGen();
 // Read SQL connection string & Create service
 var sqlConnectionString = builder.Configuration.GetValue<string>("SqlConnectionString");
 var sqlConnectionStringFound = !string.IsNullOrWhiteSpace(sqlConnectionString);
-builder.Services.AddSingleton(new ConnectionStringService(sqlConnectionString));
+builder.Services.AddSingleton<ConnectionStringService>();
+
 
 var jwtSecret = builder.Configuration.GetValue<string>("SecretJwtKey");
 
 builder.Services.AddCustomIdentity(sqlConnectionString);
 builder.Services.AddJwtAuthentication(builder.Configuration, jwtSecret);
 
-// Register TokenService
+// Register Services
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<AuthorizationService>();
 
 
 
@@ -44,7 +47,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 // API status endpoint
-app.MapGet("/", () => $"The API is up and running. ConnectionString found: {sqlConnectionStringFound}")
+app.MapGet("/", () => new { Status = "API is running", ConnectionStringFound = sqlConnectionStringFound })
     .AllowAnonymous();
+
 
 app.Run();

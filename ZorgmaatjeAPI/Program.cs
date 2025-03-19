@@ -1,6 +1,7 @@
 using _2dRooms.Services;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using ZorgmaatjeAPI.Extensions;
+using ZorgmaatjeAPI.Repositories;
 using ZorgmaatjeAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,10 @@ builder.Services.AddJwtAuthentication(builder.Configuration, jwtSecret);
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<AuthorizationService>();
+builder.Services.AddScoped<UserIdService>();
+
+// Register Repositories
+builder.Services.AddScoped<DiaryEntryRepository>();
 
 
 

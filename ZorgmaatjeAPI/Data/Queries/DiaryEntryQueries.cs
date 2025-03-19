@@ -5,6 +5,9 @@ public static class DiaryEntryQueries
     public const string GetDiaryEntriesByChildId =
         "SELECT * FROM DiaryEntries WHERE ChildId = @ChildId";
 
+    public const string GetDiaryEntryById =
+        "SELECT * FROM DiaryEntries WHERE Id = @Id";
+
     public const string CreateDiaryEntry =
         "INSERT INTO DiaryEntries (Id, ChildId, Content, StickerId, Date) " +
         "VALUES (@Id, @ChildId, @Content, @StickerId, GETDATE())";

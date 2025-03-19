@@ -39,6 +39,7 @@ public class DiaryEntryRepository : SqlService
 
         diaryEntry.ChildId = userId!;
         diaryEntry.Id = Guid.NewGuid().ToString();
+        diaryEntry.Date = DateTime.Now;
 
         await base.ExecuteAsync(DiaryEntryQueries.CreateDiaryEntry, diaryEntry);
 

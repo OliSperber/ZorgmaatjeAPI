@@ -58,7 +58,7 @@ public class ChildrenController : ControllerBase
     public async Task<IActionResult> DeleteChild()
     {
         // Deleting child with error handling
-        try { await _childRepository.DeleteAsync(child); }
+        try { await _childRepository.DeleteAsync(); }
         catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
 
         // Returning NoContent status if child is deleted succesfully

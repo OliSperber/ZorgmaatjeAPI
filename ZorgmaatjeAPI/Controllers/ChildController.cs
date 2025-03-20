@@ -42,7 +42,11 @@ public class ChildrenController : ControllerBase
             return BadRequest(ModelState);
 
         // Creating diary entry with error handling
-        try { return CreatedAtAction("Diary Entry", await _childRepository.CreateAsync(child)); }
+        try
+        {
+            var createdChild = await _childRepository.CreateAsync(child);
+            return Created(string.Empty, createdChild);
+        }
         catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
     }
 

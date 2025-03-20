@@ -34,6 +34,7 @@ builder.Services.AddScoped<UserIdService>();
 
 // Register Repositories
 builder.Services.AddScoped<DiaryEntryRepository>();
+builder.Services.AddScoped<ChildRepository>();
 
 
 

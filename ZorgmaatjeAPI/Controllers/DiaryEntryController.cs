@@ -38,7 +38,12 @@ public class DiaryEntryController : ControllerBase
             return BadRequest(ModelState);
 
         // Creating diary entry
-        try { return CreatedAtAction("Diary Entry", await _diaryEntryRepository.CreateAsync(diaryEntry)); }
+        try
+        {
+            var createdEntry = await _diaryEntryRepository.CreateAsync(diaryEntry);
+
+            return Created(string.Empty, createdEntry);
+        }
         catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
     }
 

@@ -35,7 +35,7 @@ builder.Services.AddScoped<UserIdService>();
 // Register Repositories
 builder.Services.AddScoped<DiaryEntryRepository>();
 builder.Services.AddScoped<ChildRepository>();
-
+builder.Services.AddScoped<ChildLevelCompletionRepository>();
 
 
 var app = builder.Build();

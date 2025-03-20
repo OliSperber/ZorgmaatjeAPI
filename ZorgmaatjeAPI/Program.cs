@@ -37,6 +37,8 @@ builder.Services.AddScoped<DiaryEntryRepository>();
 builder.Services.AddScoped<ChildRepository>();
 builder.Services.AddScoped<ChildLevelCompletionRepository>();
 builder.Services.AddScoped<GuardianRepository>();
+builder.Services.AddScoped<StickerRepository>();
+builder.Services.AddScoped<LevelRepository>();
 
 
 

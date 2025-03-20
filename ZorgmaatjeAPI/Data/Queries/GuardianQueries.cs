@@ -5,6 +5,9 @@ public static class GuardianQueries
     public const string GetGuardianByChildId =
         "SELECT * FROM Guardian WHERE ChildId = @ChildId";
 
+    public const string GetGuardianById =
+    "SELECT * FROM Guardian WHERE Id = @Id";
+
     public const string AddGuardian =
         "INSERT INTO Guardian (Id, UserId, ChildId, FirstName, LastName, Email, Phone, Type) " +
         "VALUES (@Id, @UserId, @ChildId, @FirstName, @LastName, @Email, @Phone, @Type)";

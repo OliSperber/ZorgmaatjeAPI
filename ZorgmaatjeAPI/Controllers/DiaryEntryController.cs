@@ -57,7 +57,7 @@ public class DiaryEntryController : ControllerBase
 
         // Check if DiaryEntry Exists
         if (await _diaryEntryRepository.GetByIdAsync(diaryEntry.Id) == null)
-            return NoContent();
+            return NotFound();
 
         // Check if user is authorized to modify the Diary Entry
         if (!await _authorizationService.IsUserAuthorizedForEntityAsync("DiaryEntries", diaryEntry.Id))

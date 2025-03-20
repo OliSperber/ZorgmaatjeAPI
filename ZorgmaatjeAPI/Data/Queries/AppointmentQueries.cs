@@ -3,7 +3,7 @@
 public static class AppointmentQueries
 {
     public const string GetAppointmentsByChildId =
-        "SELECT * FROM Appointments WHERE ChildId = @ChildId";
+        "SELECT * FROM Appointments WHERE ChildId = @ChildId ORDER BY Date";
 
     public const string CreateAppointment =
         "INSERT INTO Appointments (Id, ChildId, DoctorName, Date, AppointmentName) " +
@@ -15,4 +15,7 @@ public static class AppointmentQueries
 
     public const string DeleteAppointment =
         "DELETE FROM Appointments WHERE Id = @Id";
+
+    public const string GetAppointmentById =
+        "SELECT * FROM Appointments WHERE Id = @Id";
 }

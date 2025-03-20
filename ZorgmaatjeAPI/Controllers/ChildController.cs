@@ -58,14 +58,14 @@ public class ChildrenController : ControllerBase
         catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteChild()
-    {
-        // Deleting child with error handling
-        try { await _childRepository.DeleteAsync(); }
-        catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
+    //[HttpDelete]
+    //public async Task<IActionResult> DeleteChild()
+    //{
+    //    // Deleting child with error handling
+    //    try { await _childRepository.DeleteAsync(); }
+    //    catch (Exception ex) { return StatusCode(500, $"An unexpected error occurred: {ex}"); }
 
-        // Returning NoContent status if child is deleted succesfully
-        return NoContent();
-    }
+    //    // Returning NoContent status if child is deleted succesfully
+    //    return NoContent();
+    //}
 }

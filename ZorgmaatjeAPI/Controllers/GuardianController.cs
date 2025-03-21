@@ -53,7 +53,7 @@ public class GuardianController : ControllerBase
     }
 
     // PUT: api/guardians
-    [HttpPut("{id}")]
+    [HttpPut]
     public async Task<IActionResult> UpdateGuardian([FromBody] Guardian guardian)
     {
         // Checks if ModelState is valid
@@ -62,7 +62,7 @@ public class GuardianController : ControllerBase
 
         // Check if Guardian Exists
         if (await _guardianRepository.GetByIdAsync(guardian.Id) == null)
-            return NoContent();
+            return NotFound();
 
         // Check if user is authorized to modify the Guardian
         if (!await _authorizationService.IsUserAuthorizedForEntityAsync("Guardian", guardian.Id))
@@ -80,7 +80,7 @@ public class GuardianController : ControllerBase
     {
         // Check if Guardian Exists
         if (await _guardianRepository.GetByIdAsync(id) == null)
-            return NoContent();
+            return NotFound();
 
         // Check if user is authorized to modify the Guardian
         if (!await _authorizationService.IsUserAuthorizedForEntityAsync("Guardian", id))

@@ -39,6 +39,7 @@ builder.Services.AddScoped<ChildLevelCompletionRepository>();
 builder.Services.AddScoped<GuardianRepository>();
 builder.Services.AddScoped<StickerRepository>();
 builder.Services.AddScoped<LevelRepository>();
+builder.Services.AddScoped<AppointmentRepository>();
 
 
 

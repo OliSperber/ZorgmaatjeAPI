@@ -20,4 +20,5 @@ public class Appointment
     [Required]
     [StringLength(255)]
     public string AppointmentName { get; set; }
+    public string Description { get; set; }
 }

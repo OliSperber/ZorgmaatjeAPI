@@ -1,6 +1,5 @@
 using System.Data.Common;
 using System.Security.Claims;
-using _2dRooms.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using ZorgmaatjeAPI.Data.Queries;

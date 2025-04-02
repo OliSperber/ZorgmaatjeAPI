@@ -1,8 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-
-namespace _2dRooms.Services;
+namespace ZorgmaatjeAPI.Services;
 
 public abstract class SqlService
 {
@@ -19,34 +18,34 @@ public abstract class SqlService
         sqlConnectionString = connectionStringService.GetConnectionString();
     }
 
-    protected IDbConnection CreateConnection()
+    protected virtual IDbConnection CreateConnection()
     {
         return new SqlConnection(sqlConnectionString);
     }
 
     // Generic method to execute queries (INSERT, UPDATE, DELETE)
-    protected async Task<int> ExecuteAsync(string sql, object? parameters = null)
+    public virtual async Task<int> ExecuteAsync(string sql, object? parameters = null)
     {
         using var connection = CreateConnection();
         return await connection.ExecuteAsync(sql, parameters);
     }
 
     // Generic method to retrieve a single record
-    protected async Task<T?> QuerySingleAsync<T>(string sql, object? parameters = null)
+    protected virtual async Task<T?> QuerySingleAsync<T>(string sql, object? parameters = null)
     {
         using var connection = CreateConnection();
         return await connection.QuerySingleOrDefaultAsync<T>(sql, parameters);
     }
 
     // Generic method to retrieve multiple records
-    protected async Task<IEnumerable<T>> QueryAsync<T>(string sql, object? parameters = null)
+    protected virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, object? parameters = null)
     {
         using var connection = CreateConnection();
         return await connection.QueryAsync<T>(sql, parameters);
     }
 
     // Method to validate allowed tables
-    protected void ValidateTableName(string tableName)
+    protected virtual void ValidateTableName(string tableName)
     {
         if (!AllowedTables.Contains(tableName))
             throw new ArgumentException("Invalid table name");
